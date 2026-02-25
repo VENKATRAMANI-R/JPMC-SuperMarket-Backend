@@ -17,4 +17,6 @@ public interface SuperMarketService {
     Cart addToCart(int itemNo, int quantity);
     List<Cart> getCartItems();
     List<Float> checkout();
+    void deleteAllItem();
+    
 }

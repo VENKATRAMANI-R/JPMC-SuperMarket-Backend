@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-//@Transactional
 public class SuperMarketServiceImpl implements SuperMarketService {
 	private final Logger logger = LoggerFactory.getLogger(SuperMarketServiceImpl.class);
     private final SuperMarketRepo superMarketRepo;
@@ -95,16 +94,18 @@ public class SuperMarketServiceImpl implements SuperMarketService {
         float total = 0.0f;
 //        StringBuilder sb = new StringBuilder();
         List<Float> Result = new ArrayList<Float>();
-        
-        for (Cart cart : cartItems) {
-            float lineTotal = cart.getQuantity() * cart.getItem().getPrice();
-//            sb.append(cart.getItem().getItemName())
-//              .append(" x ").append(cart.getQuantity())
-//              .append(" = Rs. ").append(lineTotal).append("\n");
-            total += lineTotal;
-        }
+//        
+//        for (Cart cart : cartItems) {
+//            float lineTotal = cart.getQuantity() * cart.getItem().getPrice();
+////            sb.append(cart.getItem().getItemName())
+////              .append(" x ").append(cart.getQuantity())
+////              .append(" = Rs. ").append(lineTotal).append("\n");
+//            total += lineTotal;
+//        }
+        total = cartItems.stream().map(i->i.getQuantity()*i.getItem().getPrice()).reduce(0.0f, Float::sum);
+        GST calcGst = (float x)->x*0.18f;
         Result.add(total);
-        float gst = total * 0.18f;
+        float gst = calcGst.calculateGST(total);
         Result.add(gst);
         Result.add(total+gst);
 //        sb.append("------------------\n");
@@ -115,5 +116,11 @@ public class SuperMarketServiceImpl implements SuperMarketService {
 //        return sb.toString();
         logger.info("Get Checkout details");
         return Result;
+    }
+    
+    @Override
+    public void deleteAllItem() {
+    	logger.info("All Item Deleted");
+        cartRepo.deleteAll();
     }
 }
