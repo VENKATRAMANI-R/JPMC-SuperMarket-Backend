@@ -1,4 +1,4 @@
-package com.cts.jpmc.service;
+	package com.cts.jpmc.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
 
+import com.cts.jpmc.exception.ItemNotFoundException;
 import com.cts.jpmc.model.Cart;
 import com.cts.jpmc.model.SuperMarket;
 import com.cts.jpmc.repo.CartRepo;
@@ -32,7 +32,9 @@ public class SuperMarketServiceImpl implements SuperMarketService {
     @Override
     public SuperMarket getItemById(int itemNo) {
     	logger.info("getting Item By Id");
-        return superMarketRepo.findById(itemNo).orElseThrow(() -> new RuntimeException("Item not found: " + itemNo));
+        return superMarketRepo.findById(itemNo)
+                .orElseThrow(() -> new ItemNotFoundException(itemNo+": Not found"));
+
     }
 
     @Override
@@ -81,7 +83,6 @@ public class SuperMarketServiceImpl implements SuperMarketService {
         return cartRepo.save(cartEntry);
     }
 
-
     @Override
     public List<Cart> getCartItems() {
     	logger.info("Get Cart Items");
@@ -92,28 +93,13 @@ public class SuperMarketServiceImpl implements SuperMarketService {
     public List<Float> checkout() {
         List<Cart> cartItems = cartRepo.findAll();
         float total = 0.0f;
-//        StringBuilder sb = new StringBuilder();
         List<Float> Result = new ArrayList<Float>();
-//        
-//        for (Cart cart : cartItems) {
-//            float lineTotal = cart.getQuantity() * cart.getItem().getPrice();
-////            sb.append(cart.getItem().getItemName())
-////              .append(" x ").append(cart.getQuantity())
-////              .append(" = Rs. ").append(lineTotal).append("\n");
-//            total += lineTotal;
-//        }
         total = cartItems.stream().map(i->i.getQuantity()*i.getItem().getPrice()).reduce(0.0f, Float::sum);
         GST calcGst = (float x)->x*0.18f;
         Result.add(total);
         float gst = calcGst.calculateGST(total);
         Result.add(gst);
         Result.add(total+gst);
-//        sb.append("------------------\n");
-//        sb.append("Total Value : Rs.").append(total).append("\n");
-//        sb.append("+GST : Rs.").append(gst).append("\n");
-//        sb.append("Checkout Price : Rs.").append(total + gst);
-
-//        return sb.toString();
         logger.info("Get Checkout details");
         return Result;
     }

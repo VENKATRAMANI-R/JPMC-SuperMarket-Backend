@@ -61,6 +61,14 @@ public class SuperMarketController {
     public void removeItemFromCart(@PathVariable int itemNo) {
     	service.deleteItem(itemNo);
     }
+    
+    @DeleteMapping("/cart/deleteAllItems")
+    public String removeAllItemFromCart() {
+    	service.deleteAllItem();
+    	return "All Items Deleted";
+    }
+    
+    //experimental
     @GetMapping("/receipt")
     public void generateReceipt(HttpServletResponse response) throws IOException {
         response.setContentType("application/pdf");
@@ -99,7 +107,6 @@ public class SuperMarketController {
             doc.add(new Paragraph(""));
             doc.add(tableTwo);
             doc.close();
-            service.deleteAllItem();
         }
     }
 }
