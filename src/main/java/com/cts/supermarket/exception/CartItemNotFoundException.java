@@ -1,4 +1,4 @@
-package com.cts.jpmc.exception;
+package com.cts.supermarket.exception;
 
 public class CartItemNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

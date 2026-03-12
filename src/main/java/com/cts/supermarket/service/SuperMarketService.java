@@ -1,11 +1,11 @@
-package com.cts.jpmc.service;
+package com.cts.supermarket.service;
 
 
 import java.util.List;
 import java.util.Optional;
 
-import com.cts.jpmc.model.Cart;
-import com.cts.jpmc.model.SuperMarket;
+import com.cts.supermarket.model.Cart;
+import com.cts.supermarket.model.SuperMarket;
 
 public interface SuperMarketService {
 	List<SuperMarket> getAllItems();

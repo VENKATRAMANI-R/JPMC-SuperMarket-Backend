@@ -1,10 +1,10 @@
-package com.cts.jpmc;
+package com.cts.supermarket;
 
-import com.cts.jpmc.model.Cart;
-import com.cts.jpmc.model.SuperMarket;
-import com.cts.jpmc.repo.CartRepo;
-import com.cts.jpmc.repo.SuperMarketRepo;
-import com.cts.jpmc.service.SuperMarketServiceImpl;
+import com.cts.supermarket.model.Cart;
+import com.cts.supermarket.model.SuperMarket;
+import com.cts.supermarket.repo.CartRepo;
+import com.cts.supermarket.repo.SuperMarketRepo;
+import com.cts.supermarket.service.SuperMarketServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 
 @SpringBootTest
-class JpmcApplicationTests {
+class supermarketApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,4 +1,4 @@
-package com.cts.jpmc.model;
+package com.cts.supermarket.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

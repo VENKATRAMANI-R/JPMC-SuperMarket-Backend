@@ -1,4 +1,4 @@
-package com.cts.jpmc.service;
+package com.cts.supermarket.service;
 
 @FunctionalInterface
 public interface GST {

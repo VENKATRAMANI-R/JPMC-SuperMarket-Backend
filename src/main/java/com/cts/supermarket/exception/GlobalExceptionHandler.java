@@ -1,4 +1,4 @@
-package com.cts.jpmc.exception;
+package com.cts.supermarket.exception;
 
 
 import java.time.LocalDateTime;

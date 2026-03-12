@@ -1,4 +1,4 @@
-package com.cts.jpmc.controller;
+package com.cts.supermarket.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,9 +8,9 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.cts.jpmc.model.Cart;
-import com.cts.jpmc.model.SuperMarket;
-import com.cts.jpmc.service.SuperMarketService;
+import com.cts.supermarket.model.Cart;
+import com.cts.supermarket.model.SuperMarket;
+import com.cts.supermarket.service.SuperMarketService;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -27,6 +27,11 @@ public class SuperMarketController {
 
     private final SuperMarketService service;
 
+    @GetMapping
+    public String test() {
+    	return "Super Market Application is running...";
+    }
+    
     @GetMapping("/items")
     public List<SuperMarket> getAllItems() {
         return service.getAllItems();

@@ -1,13 +1,13 @@
-package com.cts.jpmc;
+package com.cts.supermarket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JpmcApplication {
+public class SupermarketApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JpmcApplication.class, args);
+		SpringApplication.run(SupermarketApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-	package com.cts.jpmc.service;
+	package com.cts.supermarket.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.cts.jpmc.exception.ItemNotFoundException;
-import com.cts.jpmc.model.Cart;
-import com.cts.jpmc.model.SuperMarket;
-import com.cts.jpmc.repo.CartRepo;
-import com.cts.jpmc.repo.SuperMarketRepo;
+import com.cts.supermarket.exception.ItemNotFoundException;
+import com.cts.supermarket.model.Cart;
+import com.cts.supermarket.model.SuperMarket;
+import com.cts.supermarket.repo.CartRepo;
+import com.cts.supermarket.repo.SuperMarketRepo;
 
 import lombok.RequiredArgsConstructor;
 
