@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cts</groupId>
-	<artifactId>jpmc</artifactId>
+	<artifactId>supermarket</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jpmc</name>
+	<name>supermarket</name>
 	<description>POC project for Spring Boot</description>
 	<url/>
 	<licenses>
